@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/stylesheets/upload-template.css">
+</head>
+
+<body>
+    <mat-expansion-panel hideToggle class="chatbot">
+        <mat-expansion-panel-header class="mat-elevation-z2" style="background-color:rgba(0, 159, 227,0.4)">
+            <mat-panel-title>Chat with us!</mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+            <mat-icon>chat</mat-icon>
+        </mat-expansion-panel-header>
+        <div fxLayout="column">
+            <div style="overflow-y:scroll;max-height:400px;padding:16px">
+                <app-chatbot-message *ngFor="let message of messages" [message]="message"></app-chatbot-message>
+            </div>
+            <form (ngSubmit)="onSubmit()" fxLayout="row"
+                style="width:400px;background-color:#fff;border-top:1px solid #ccc">
+                <mat-form-field style="width:100%;padding-left:8px">
+                    <input matInput [(ngModel)]="currentMessageText" name="currentMessageText">
+                </mat-form-field>
+                <label for="fileInput">
+                    <mat-icon>insert_photo</mat-icon>
+                </label>
+                <input type="file" id="fileInput" style="display:none" (change)="postVision($event)">
+            </form>
+        </div>
+    </mat-expansion-panel>
+
+
+</body>
+
+</html>
